@@ -1,0 +1,99 @@
+@startuml Procesos de Gestión de Cambios
+
+' --- DIAGRAMA AS-IS (PROCESO ACTUAL - MANUAL) ---
+header Proceso de Gestión de Cambios
+title Proceso ACTUAL (AS-IS) - Gestión Manual / Informal
+
+|Solicitante|
+start
+:Detecta necesidad de cambio;
+:Envía correo o mensaje informal;
+
+|Director de Proyecto|
+:Recibe solicitud;
+:Evalúa de forma manual (sin métricas);
+if (¿Es factible?) then (no)
+  :Informa rechazo por correo;
+  stop
+else (sí)
+  :Busca un desarrollador disponible;
+endif
+
+|Desarrollador|
+:Recibe instrucciones (verbales/correo);
+:Realiza el cambio en el código;
+:Notifica que "está listo";
+
+|Tester / QA|
+:Prueba el sistema (sin guía formal);
+if (¿Funciona?) then (no)
+  :Avisa al desarrollador informalmente;
+  detach
+else (sí)
+  :Informa al Director;
+endif
+
+|Director de Proyecto|
+:Actualiza el sistema manualmente;
+:Avisa al solicitante;
+stop
+
+@enduml
+
+@startuml Proceso Propuesto
+title Proceso PROPUESTO (TO-BE) - Sistema GestioCambios
+
+|Solicitante|
+start
+:Registra Nueva Solicitud (UI-03);
+
+|Director del Proyecto|
+:Validación y Clasificación Inicial (UI-06);
+if (¿Válido?) then (no)
+  :Rechaza con justificación;
+  :Notificación Automática;
+  stop
+else (sí)
+  :Asigna número SC;
+  :Deriva a Arquitecto;
+endif
+
+|Arquitecto de Software|
+:Realiza Análisis de Impacto (UI-07);
+:Identifica ECS y Riesgos;
+:Categoriza (Menor/Mayor);
+
+|Comité / Director|
+:Sesión de Revisión y Aprobación (UI-08);
+if (¿Aprobado?) then (no)
+  :Registra motivos de rechazo;
+  stop
+else (sí)
+  :Asigna Desarrollador y Tester;
+endif
+
+|Desarrollador|
+:Implementa cambio (Mis Tareas UI-09);
+:Registra rama de Git y PR (UI-10);
+:Envía a QA;
+
+|Tester / QA|
+:Verifica implementación (Bandeja QA UI-11);
+:Registra resultados y evidencias (UI-12);
+if (¿Exitoso?) then (no)
+  :Devuelve a Desarrollador;
+  detach
+else (sí)
+  :Aprueba para despliegue;
+endif
+
+|Director del Proyecto|
+:Verificación final y Versionado (UI-13);
+:Merge a Main;
+:Cierre de Solicitud (UI-14);
+
+|Solicitante|
+:Recibe confirmación de éxito;
+stop
+
+@enduml

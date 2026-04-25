@@ -1,0 +1,49 @@
+@startuml Arquitectura de Paquetes - GestioCambios
+
+' --- Estilo y Configuración ---
+skinparam package {
+    BackgroundColor #1c2030
+    BorderColor #6c63ff
+    FontColor #e8eaf2
+    FontSize 14
+    BorderThickness 2
+}
+skinparam arrow {
+    Color #6c63ff
+    Thickness 1.5
+}
+skinparam Shadowing false
+
+title Arquitectura de Paquetes (Alineado con Sidebar UI)
+
+' --- Estructura de Paquetes (7 Módulos) ---
+
+together {
+  package "General" as P1 {}
+  package "Solicitante" as P2 {}
+  package "Director" as P3 {}
+}
+
+together {
+  package "Arquitecto" as P4 {}
+  package "Comité" as P5 {}
+}
+
+together {
+  package "Desarrollador" as P6 {}
+  package "QA" as P7 {}
+}
+
+' --- Alineación y Flujo ---
+P1 -[hidden]down- P4
+P2 -[hidden]down- P5
+P3 -[hidden]down- P6
+
+P2 -right-> P3 : Solicitud
+P3 -down-> P4 : Derivación
+P4 -right-> P5 : Análisis
+P5 -down-> P6 : Aprobación
+P6 -right-> P7 : Implementación
+P7 -up-> P3 : Verificación
+
+@enduml
