@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validación SC-045 — Sistema de Gestión de Cambios</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-container"></div>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1 class="page-title">Validación de Solicitud</h1>
+          <span class="text-muted">/</span>
+          <span class="page-subtitle font-mono text-accent">SC-045</span>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn btn-ghost btn-sm" onclick="window.history.back()">Regresar</button>
+          <button class="btn btn-danger btn-sm">Rechazar Solicitud</button>
+          <button class="btn btn-success btn-sm">Aprobar y Derivar a Análisis</button>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <!-- Trazabilidad Visual -->
+        <div class="card mb-4">
+          <div class="progress-track">
+            <div class="progress-step current">
+              <div class="step-circle">1</div>
+              <div class="step-label">Validación Inicial</div>
+            </div>
+            <div class="progress-step">
+              <div class="step-circle">2</div>
+              <div class="step-label">Análisis de Impacto</div>
+            </div>
+            <div class="progress-step">
+              <div class="step-circle">3</div>
+              <div class="step-label">Aprobación Comité</div>
+            </div>
+            <div class="progress-step">
+              <div class="step-circle">4</div>
+              <div class="step-label">Implementación</div>
+            </div>
+            <div class="progress-step">
+              <div class="step-circle">5</div>
+              <div class="step-label">Pruebas / QA</div>
+            </div>
+            <div class="progress-step">
+              <div class="step-circle">6</div>
+              <div class="step-label">Cierre</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2" style="grid-template-columns: 1.5fr 1fr;">
+          <!-- Detalle de la Solicitud -->
+          <div class="card">
+            <div class="section-title">Información de la Solicitud</div>
+            <div class="grid-2">
+              <div class="detail-row">
+                <span class="detail-key">Título</span>
+                <span class="detail-value font-bold">Error en cálculo de IVA al finalizar compra</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-key">Tipo</span>
+                <span class="detail-value">Incidencia</span>
+              </div>
+            </div>
+            <div class="detail-row">
+              <span class="detail-key">Descripción</span>
+              <span class="detail-value">Al intentar finalizar la compra en el carrito, el sistema calcula el 15% de IVA en lugar del 18% reglamentario. Esto genera discrepancias contables.</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-key">Justificación</span>
+              <span class="detail-value">Evitar sanciones legales y asegurar que el cobro a los clientes sea el correcto según la normativa vigente.</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-key">Archivos Adjuntos</span>
+              <div class="flex gap-2 mt-1">
+                <div class="badge" style="background:var(--bg-elevated); border:1px solid var(--border); cursor:pointer;">📎 captura_error.png</div>
+                <div class="badge" style="background:var(--bg-elevated); border:1px solid var(--border); cursor:pointer;">📎 log_transaccion.txt</div>
+              </div>
+            </div>
+
+            <div class="section-title mt-4">Historial de Cambios</div>
+            <div class="notif-list">
+              <div class="notif-item">
+                <div class="notif-text">
+                  Solicitud creada por <strong>Ana Quispe</strong>
+                  <div class="notif-time">Hoy, 10:45 AM</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formulario de Validación -->
+          <div class="card" style="border-color: var(--accent);">
+            <div class="section-title">Validación y Clasificación</div>
+            <p class="text-xs text-muted mb-3">Define los parámetros iniciales para el análisis de impacto.</p>
+            
+            <form>
+              <div class="form-group">
+                <label class="form-label">Asignar Número de Seguimiento</label>
+                <input type="text" class="form-control font-mono" value="SC-2026-045" readonly>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Clasificación Inicial <span class="required">*</span></label>
+                <select class="form-control">
+                  <option value="correctivo">Mantenimiento Correctivo</option>
+                  <option value="evolutivo">Mantenimiento Evolutivo</option>
+                  <option value="adaptativo">Mantenimiento Adaptativo</option>
+                  <option value="perfectivo">Mantenimiento Perfectivo</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Derivar al Arquitecto <span class="required">*</span></label>
+                <select class="form-control">
+                  <option value="dc">Diego Castillo (Arquitecto Principal)</option>
+                  <option value="rm">Roberto Mendoza (Arquitecto de Datos)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Comentarios de Validación</label>
+                <textarea class="form-control" placeholder="Instrucciones adicionales para el análisis..."></textarea>
+              </div>
+
+              <div class="mt-4">
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Confirmar y Derivar</button>
+                <button type="button" class="btn btn-ghost mt-2" style="width: 100%; justify-content: center;">Descartar / Rechazar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="sidebar.js"></script>
+  <script>
+    document.getElementById('sidebar-container').innerHTML = renderSidebar('ui-06', 'director');
+  </script>
+</body>
+</html>

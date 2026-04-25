@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Sistema de Gestión de Cambios</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-container"></div>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1 class="page-title">Dashboard Principal</h1>
+          <span class="text-muted">/</span>
+          <span class="page-subtitle">Vista General del Sistema</span>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn btn-ghost btn-sm">
+            <span>📅</span> Últimos 30 días
+          </button>
+          <button class="btn btn-primary btn-sm">
+            <span>➕</span> Nueva SC
+          </button>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <!-- Métricas -->
+        <div class="grid-4 mb-4">
+          <div class="stat-card">
+            <div class="stat-icon" style="background: var(--info-bg); color: var(--info);">📥</div>
+            <div class="stat-label">Solicitudes Abiertas</div>
+            <div class="stat-value">24</div>
+            <div class="stat-change up">↑ 12% vs mes anterior</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background: var(--warning-bg); color: var(--warning);">⏳</div>
+            <div class="stat-label">En Proceso</div>
+            <div class="stat-value">12</div>
+            <div class="stat-change">Manteniéndose</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background: var(--success-bg); color: var(--success);">✅</div>
+            <div class="stat-label">Cerradas / Exitosas</div>
+            <div class="stat-value">158</div>
+            <div class="stat-change up">↑ 5% vs mes anterior</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background: var(--danger-bg); color: var(--danger);">🚫</div>
+            <div class="stat-label">Rechazadas</div>
+            <div class="stat-value">8</div>
+            <div class="stat-change down">↓ 2% vs mes anterior</div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <!-- Bandeja de Tareas -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">Bandeja de Acciones Requeridas</h2>
+                <p class="card-subtitle">Tareas pendientes que requieren tu intervención</p>
+              </div>
+              <button class="btn btn-ghost btn-sm">Ver todas</button>
+            </div>
+            <div class="notif-list">
+              <div class="notif-item unread">
+                <div class="notif-dot"></div>
+                <div class="notif-text">
+                  <strong>Validación Pendiente:</strong> La solicitud <strong>SC-042</strong> requiere clasificación inicial.
+                  <div class="notif-time">Hace 15 minutos</div>
+                </div>
+              </div>
+              <div class="notif-item unread">
+                <div class="notif-dot"></div>
+                <div class="notif-text">
+                  <strong>Aprobación Mayor:</strong> El análisis de impacto para <strong>SC-038</strong> está listo para revisión del comité.
+                  <div class="notif-time">Hace 2 horas</div>
+                </div>
+              </div>
+              <div class="notif-item">
+                <div class="notif-text">
+                  <strong>Validación de Cierre:</strong> El cambio <strong>SC-035</strong> ha pasado todas las pruebas y espera merge final.
+                  <div class="notif-time">Hace 5 horas</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Actividad Reciente -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">Actividad Reciente</h2>
+                <p class="card-subtitle">Flujo de trabajo en tiempo real</p>
+              </div>
+            </div>
+            <div class="table-wrapper">
+              <table style="font-size: 12px;">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Acción</th>
+                    <th>Usuario</th>
+                    <th>Fecha</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="font-mono text-accent">SC-045</td>
+                    <td>Nueva solicitud creada</td>
+                    <td>Ana Quispe</td>
+                    <td>10:45 AM</td>
+                  </tr>
+                  <tr>
+                    <td class="font-mono text-accent">SC-041</td>
+                    <td>Análisis completado</td>
+                    <td>Diego Castillo</td>
+                    <td>09:30 AM</td>
+                  </tr>
+                  <tr>
+                    <td class="font-mono text-accent">SC-039</td>
+                    <td>Implementación enviada</td>
+                    <td>Gregory Huanca</td>
+                    <td>Ayer</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="sidebar.js"></script>
+  <script>
+    document.getElementById('sidebar-container').innerHTML = renderSidebar('ui-02', 'director');
+  </script>
+</body>
+</html>

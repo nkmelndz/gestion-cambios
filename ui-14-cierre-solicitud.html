@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cierre de Solicitud — Sistema de Gestión de Cambios</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .success-icon {
+      font-size: 64px;
+      margin-bottom: 24px;
+      color: var(--success);
+      background: var(--success-bg);
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      animation: scaleUp 0.5s ease-out;
+    }
+    @keyframes scaleUp {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-container"></div>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1 class="page-title">Cierre de Proceso</h1>
+          <span class="text-muted">/</span>
+          <span class="page-subtitle font-mono text-accent">SC-045</span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <div style="max-width: 600px; margin: 60px auto; text-align: center;">
+          <div class="card">
+            <div class="success-icon">✅</div>
+            <h2 class="text-xl font-bold mb-2">¡Solicitud Completada con Éxito!</h2>
+            <p class="text-secondary mb-4">El cambio ha sido verificado, versionado y desplegado satisfactoriamente en el entorno de producción.</p>
+            
+            <div class="card" style="background: var(--bg-elevated); text-align: left; margin-bottom: 24px;">
+              <div class="detail-row">
+                <span class="detail-key">ID de Solicitud</span>
+                <span class="detail-value font-mono">SC-045</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-key">Versión Final</span>
+                <span class="detail-value font-mono">v1.2.5</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-key">Notificación</span>
+                <span class="detail-value text-xs">Se ha enviado un correo de confirmación automática a <strong>Ana Quispe</strong> (Solicitante).</span>
+              </div>
+            </div>
+
+            <div class="flex gap-2 justify-center">
+              <a href="ui-02-dashboard.html" class="btn btn-primary">Volver al Dashboard</a>
+              <button class="btn btn-ghost" onclick="window.print()">Imprimir Acta de Cierre</button>
+            </div>
+          </div>
+          
+          <div class="mt-4 text-xs text-muted">
+            Registro de auditoría guardado el 25/04/2026 a las 02:45 PM
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="sidebar.js"></script>
+  <script>
+    document.getElementById('sidebar-container').innerHTML = renderSidebar('ui-14', 'director');
+  </script>
+</body>
+</html>

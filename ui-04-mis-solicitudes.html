@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Solicitudes — Sistema de Gestión de Cambios</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-container"></div>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1 class="page-title">Mis Solicitudes de Cambio</h1>
+          <span class="text-muted">/</span>
+          <span class="page-subtitle">Seguimiento de reportes</span>
+        </div>
+        <div class="topbar-actions">
+          <div class="flex gap-2">
+            <input type="text" class="form-control" placeholder="Buscar por ID o título..." style="width: 240px; padding-top: 6px; padding-bottom: 6px;">
+            <button class="btn btn-primary btn-sm"><span>➕</span> Nueva SC</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">Historial de Solicitudes</h2>
+              <p class="card-subtitle">Consulta el estado actual de tus peticiones en tiempo real</p>
+            </div>
+            <div class="flex gap-2">
+              <button class="btn btn-icon"><span>🔽</span></button>
+              <button class="btn btn-icon"><span>🔄</span></button>
+            </div>
+          </div>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Fecha</th>
+                  <th>Título</th>
+                  <th>Tipo</th>
+                  <th>Estado</th>
+                  <th>Última Actualización</th>
+                  <th style="text-align: right;">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="font-mono text-accent">SC-045</td>
+                  <td>25/04/2026</td>
+                  <td class="font-bold">Error en cálculo de IVA</td>
+                  <td>Incidencia</td>
+                  <td><span class="badge badge-pending">Pendiente de Validación</span></td>
+                  <td>Hoy, 10:45 AM</td>
+                  <td style="text-align: right;">
+                    <button class="btn btn-icon">👁️</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="font-mono text-accent">SC-042</td>
+                  <td>23/04/2026</td>
+                  <td class="font-bold">Optimización de carga de imágenes</td>
+                  <td>Mejora</td>
+                  <td><span class="badge badge-progress">En Análisis de Impacto</span></td>
+                  <td>Ayer, 03:20 PM</td>
+                  <td style="text-align: right;">
+                    <button class="btn btn-icon">👁️</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="font-mono text-accent">SC-035</td>
+                  <td>15/04/2026</td>
+                  <td class="font-bold">Integración con pasarela de pagos</td>
+                  <td>Mejora</td>
+                  <td><span class="badge badge-approved">Implementada / En QA</span></td>
+                  <td>Hoy, 09:12 AM</td>
+                  <td style="text-align: right;">
+                    <button class="btn btn-icon">👁️</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="font-mono text-accent">SC-031</td>
+                  <td>10/04/2026</td>
+                  <td class="font-bold">Fuga de memoria en login</td>
+                  <td>Incidencia</td>
+                  <td><span class="badge badge-closed">Cerrada / Exitosa</span></td>
+                  <td>18/04/2026</td>
+                  <td style="text-align: right;">
+                    <button class="btn btn-icon">👁️</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="font-mono text-accent">SC-028</td>
+                  <td>05/04/2026</td>
+                  <td class="font-bold">Tema oscuro para dashboard</td>
+                  <td>Mejora</td>
+                  <td><span class="badge badge-rejected">Rechazada</span></td>
+                  <td>08/04/2026</td>
+                  <td style="text-align: right;">
+                    <button class="btn btn-icon">👁️</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="flex justify-between items-center mt-4">
+            <p class="text-xs text-muted">Mostrando 5 de 12 solicitudes</p>
+            <div class="flex gap-2">
+              <button class="btn btn-ghost btn-sm" disabled>Anterior</button>
+              <button class="btn btn-ghost btn-sm">Siguiente</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="sidebar.js"></script>
+  <script>
+    document.getElementById('sidebar-container').innerHTML = renderSidebar('ui-04', 'solicitante');
+  </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QA: Pruebas Pendientes — Sistema de Gestión de Cambios</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-container"></div>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1 class="page-title">Panel de Control de Calidad</h1>
+          <span class="text-muted">/</span>
+          <span class="page-subtitle">Verificación de implementaciones</span>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn btn-secondary btn-sm">Ver Guía de Pruebas</button>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">Implementaciones por Verificar</h2>
+              <p class="card-subtitle">Cambios realizados esperando aprobación de QA</p>
+            </div>
+            <span class="badge badge-pending">3 Pendientes</span>
+          </div>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Desarrollador</th>
+                  <th>Título del Cambio</th>
+                  <th>Rama Git</th>
+                  <th>Fecha Envío</th>
+                  <th style="text-align: right;">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="font-mono text-accent">SC-045</td>
+                  <td>
+                    <div class="flex items-center gap-2">
+                      <div class="user-avatar" style="width:24px; height:24px; font-size:10px; background:#22c55e">GH</div>
+                      <span class="text-sm">Gregory Huanca</span>
+                    </div>
+                  </td>
+                  <td class="font-bold">Corrección tasa de IVA (15% -> 18%)</td>
+                  <td class="font-mono text-xs">fix/SC-045-iva-calc</td>
+                  <td>Hoy, 01:30 PM</td>
+                  <td style="text-align: right;">
+                    <a href="ui-12-resultados-pruebas.html" class="btn btn-primary btn-sm">Probar</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="font-mono text-accent">SC-038</td>
+                  <td>
+                    <div class="flex items-center gap-2">
+                      <div class="user-avatar" style="width:24px; height:24px; font-size:10px; background:#0ea5e9">RS</div>
+                      <span class="text-sm">Ricardo Santos</span>
+                    </div>
+                  </td>
+                  <td class="font-bold">Nueva API de Reportes</td>
+                  <td class="font-mono text-xs">feature/SC-038-api</td>
+                  <td>Ayer, 11:20 AM</td>
+                  <td style="text-align: right;">
+                    <button class="btn btn-primary btn-sm">Probar</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="sidebar.js"></script>
+  <script>
+    document.getElementById('sidebar-container').innerHTML = renderSidebar('ui-11', 'tester');
+  </script>
+</body>
+</html>

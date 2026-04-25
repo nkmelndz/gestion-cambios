@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bandeja de Entrada — Sistema de Gestión de Cambios</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-container"></div>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1 class="page-title">Bandeja de Entrada de Solicitudes</h1>
+          <span class="text-muted">/</span>
+          <span class="page-subtitle">Nuevas peticiones pendientes de validación</span>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn btn-ghost btn-sm">Filtrar por Prioridad</button>
+          <button class="btn btn-secondary btn-sm">Exportar Reporte</button>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">Solicitudes por Validar</h2>
+              <p class="card-subtitle">Acciones requeridas para iniciar el flujo de gestión</p>
+            </div>
+            <span class="badge badge-pending">5 Pendientes</span>
+          </div>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Origen</th>
+                  <th>Fecha</th>
+                  <th>Título de la Solicitud</th>
+                  <th>Tipo</th>
+                  <th>Prioridad Sugerida</th>
+                  <th style="text-align: right;">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="flex items-center gap-2">
+                      <div class="user-avatar" style="width:24px; height:24px; font-size:10px; background:#f5576c">AQ</div>
+                      <span class="text-sm">Ana Quispe</span>
+                    </div>
+                  </td>
+                  <td>Hoy, 10:45 AM</td>
+                  <td class="font-bold">Error en cálculo de IVA al finalizar compra</td>
+                  <td>Incidencia</td>
+                  <td><span class="badge" style="color:var(--danger); background:var(--danger-bg)">Alta</span></td>
+                  <td style="text-align: right;">
+                    <a href="ui-06-detalle-validacion.html" class="btn btn-primary btn-sm">Validar</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="flex items-center gap-2">
+                      <div class="user-avatar" style="width:24px; height:24px; font-size:10px; background:#22c55e">JL</div>
+                      <span class="text-sm">Juan López</span>
+                    </div>
+                  </td>
+                  <td>Ayer, 04:15 PM</td>
+                  <td class="font-bold">Agregar botón de "Exportar a PDF" en facturas</td>
+                  <td>Mejora</td>
+                  <td><span class="badge" style="color:var(--info); background:var(--info-bg)">Media</span></td>
+                  <td style="text-align: right;">
+                    <button class="btn btn-primary btn-sm">Validar</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="flex items-center gap-2">
+                      <div class="user-avatar" style="width:24px; height:24px; font-size:10px; background:#a855f7">MR</div>
+                      <span class="text-sm">María Rojas</span>
+                    </div>
+                  </td>
+                  <td>23/04/2026</td>
+                  <td class="font-bold">Carga lenta en el módulo de inventario</td>
+                  <td>Incidencia</td>
+                  <td><span class="badge" style="color:var(--warning); background:var(--warning-bg)">Crítica</span></td>
+                  <td style="text-align: right;">
+                    <button class="btn btn-primary btn-sm">Validar</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="sidebar.js"></script>
+  <script>
+    document.getElementById('sidebar-container').innerHTML = renderSidebar('ui-05', 'director');
+  </script>
+</body>
+</html>

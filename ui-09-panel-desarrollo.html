@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Tareas de Desarrollo — Sistema de Gestión de Cambios</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-container"></div>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1 class="page-title">Panel de Implementación</h1>
+          <span class="text-muted">/</span>
+          <span class="page-subtitle">Tareas asignadas para desarrollo</span>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn btn-ghost btn-sm">Ver Documentación Técnica</button>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">Mis Cambios Pendientes</h2>
+              <p class="card-subtitle">Cambios aprobados esperando desarrollo</p>
+            </div>
+            <span class="badge badge-progress">4 Asignados</span>
+          </div>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Prioridad</th>
+                  <th>Tarea</th>
+                  <th>ECS Afectados</th>
+                  <th>Fecha Límite</th>
+                  <th style="text-align: right;">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="font-mono text-accent">SC-045</td>
+                  <td><span class="badge" style="color:var(--danger); background:var(--danger-bg)">Crítica</span></td>
+                  <td class="font-bold">Corrección tasa de IVA (15% -> 18%)</td>
+                  <td><span class="badge badge-minor">engine_tax.js</span></td>
+                  <td>26/04/2026</td>
+                  <td style="text-align: right;">
+                    <a href="ui-10-registro-implementacion.html" class="btn btn-primary btn-sm">Implementar</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="font-mono text-accent">SC-041</td>
+                  <td><span class="badge" style="color:var(--info); background:var(--info-bg)">Media</span></td>
+                  <td class="font-bold">Añadir logs de auditoría en login</td>
+                  <td><span class="badge badge-minor">auth_service.py</span></td>
+                  <td>28/04/2026</td>
+                  <td style="text-align: right;">
+                    <button class="btn btn-primary btn-sm">Implementar</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="sidebar.js"></script>
+  <script>
+    document.getElementById('sidebar-container').innerHTML = renderSidebar('ui-09', 'desarrollador');
+  </script>
+</body>
+</html>

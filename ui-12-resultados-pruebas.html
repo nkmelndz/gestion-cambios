@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultados de Prueba SC-045 — Sistema de Gestión de Cambios</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-container"></div>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1 class="page-title">Registro de Resultados</h1>
+          <span class="text-muted">/</span>
+          <span class="page-subtitle font-mono text-accent">SC-045</span>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn btn-ghost btn-sm" onclick="window.history.back()">Regresar</button>
+          <div class="flex gap-2">
+            <button class="btn btn-danger btn-sm">Fallido (Rechazar)</button>
+            <button class="btn btn-success btn-sm">Exitoso (Aprobar)</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <!-- Trazabilidad Visual -->
+        <div class="card mb-4">
+          <div class="progress-track">
+            <div class="progress-step done">
+              <div class="step-circle">1</div>
+              <div class="step-label">Validación Inicial</div>
+            </div>
+            <div class="progress-step done">
+              <div class="step-circle">2</div>
+              <div class="step-label">Análisis de Impacto</div>
+            </div>
+            <div class="progress-step done">
+              <div class="step-circle">3</div>
+              <div class="step-label">Aprobación Comité</div>
+            </div>
+            <div class="progress-step done">
+              <div class="step-circle">4</div>
+              <div class="step-label">Implementación</div>
+            </div>
+            <div class="progress-step current">
+              <div class="step-circle">5</div>
+              <div class="step-label">Pruebas / QA</div>
+            </div>
+            <div class="progress-step">
+              <div class="step-circle">6</div>
+              <div class="step-label">Cierre</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <!-- Formulario de Pruebas -->
+          <div class="card">
+            <div class="section-title">Resultados de la Verificación</div>
+            <form>
+              <div class="form-group">
+                <label class="form-label">Estado de la Prueba <span class="required">*</span></label>
+                <div class="flex gap-4 mt-2">
+                  <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="radio" name="status" value="pass" checked style="accent-color: var(--success)">
+                    <span class="text-sm">Pruebas Exitosas</span>
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="radio" name="status" value="fail" style="accent-color: var(--danger)">
+                    <span class="text-sm">Pruebas Fallidas</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Resumen de Pruebas Realizadas</label>
+                <textarea class="form-control" placeholder="Describe los casos de prueba ejecutados..."></textarea>
+              </div>
+
+              <div id="failure-section" class="form-group" style="display:none;">
+                <label class="form-label text-danger">Detalle de Errores Encontrados</label>
+                <textarea class="form-control" placeholder="Especifica qué falló para que el desarrollador pueda corregirlo..."></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Evidencia de QA (Capturas/Logs)</label>
+                <div class="file-upload">
+                  <div class="file-upload-icon">📄</div>
+                  <div class="file-upload-text">Sube tus reportes de prueba</div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Datos de la Implementación (Para referencia) -->
+          <div class="flex flex-direction-column gap-4">
+            <div class="card" style="background: var(--bg-surface);">
+              <div class="section-title">Datos de Implementación</div>
+              <div class="detail-row">
+                <span class="detail-key">Desarrollador</span>
+                <span class="detail-value text-sm">Gregory Huanca</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-key">Pull Request</span>
+                <a href="#" class="detail-value text-xs text-accent">https://github.com/empresa/proyecto/pull/123</a>
+              </div>
+              <div class="detail-row">
+                <span class="detail-key">Comentarios Técnicos</span>
+                <span class="detail-value text-xs text-muted">"Se actualizó la constante de IVA en config.json y se ajustó la lógica en el motor de cálculo. Se incluyeron tests unitarios."</span>
+              </div>
+            </div>
+
+            <div class="card" style="border: 1px solid var(--success);">
+              <div class="section-title">Aprobación Final</div>
+              <p class="text-xs text-muted mb-3">Si apruebas esta implementación, el cambio pasará al Director para el merge oficial y cierre de solicitud.</p>
+              <button class="btn btn-success" style="width: 100%; justify-content: center;">Enviar Verificación Final</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="sidebar.js"></script>
+  <script>
+    document.getElementById('sidebar-container').innerHTML = renderSidebar('ui-12', 'tester');
+    
+    // Toggle failure section based on radio selection
+    document.querySelectorAll('input[name="status"]').forEach(radio => {
+      radio.addEventListener('change', (e) => {
+        document.getElementById('failure-section').style.display = (e.target.value === 'fail') ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>

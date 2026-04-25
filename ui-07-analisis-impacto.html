@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Análisis de Impacto SC-045 — Sistema de Gestión de Cambios</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-container"></div>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1 class="page-title">Análisis de Impacto</h1>
+          <span class="text-muted">/</span>
+          <span class="page-subtitle font-mono text-accent">SC-045</span>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn btn-ghost btn-sm" onclick="window.history.back()">Regresar</button>
+          <button class="btn btn-primary btn-sm">Guardar Análisis</button>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <!-- Trazabilidad Visual -->
+        <div class="card mb-4">
+          <div class="progress-track">
+            <div class="progress-step done">
+              <div class="step-circle">1</div>
+              <div class="step-label">Validación Inicial</div>
+            </div>
+            <div class="progress-step current">
+              <div class="step-circle">2</div>
+              <div class="step-label">Análisis de Impacto</div>
+            </div>
+            <div class="progress-step">
+              <div class="step-circle">3</div>
+              <div class="step-label">Aprobación Comité</div>
+            </div>
+            <div class="progress-step">
+              <div class="step-circle">4</div>
+              <div class="step-label">Implementación</div>
+            </div>
+            <div class="progress-step">
+              <div class="step-circle">5</div>
+              <div class="step-label">Pruebas / QA</div>
+            </div>
+            <div class="progress-step">
+              <div class="step-circle">6</div>
+              <div class="step-label">Cierre</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <!-- Columna Izquierda: Información y Formulario -->
+          <div class="flex flex-direction-column gap-4">
+            <div class="card">
+              <div class="section-title">Detalles del Análisis</div>
+              <form>
+                <div class="form-group">
+                  <label class="form-label">Identificación de ECS Afectados <span class="required">*</span></label>
+                  <textarea class="form-control" placeholder="Menciona los elementos de configuración, módulos o archivos que serán modificados..."></textarea>
+                  <div class="flex gap-2 mt-2">
+                    <span class="badge badge-minor">Modulo_Facturacion.js</span>
+                    <span class="badge badge-minor">DB_Transacciones</span>
+                    <span class="badge badge-minor">+ Agregar ECS</span>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label">Estimación de Costo (Horas)</label>
+                    <input type="number" class="form-control" value="8">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Categoría del Cambio <span class="required">*</span></label>
+                    <select class="form-control">
+                      <option value="menor">Cambio Menor (Bajo Impacto)</option>
+                      <option value="mayor">Cambio Mayor (Alto Impacto)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Riesgos Identificados</label>
+                  <textarea class="form-control" placeholder="Posibles efectos secundarios o dependencias críticas..."></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Beneficios Esperados</label>
+                  <textarea class="form-control" placeholder="Mejoras en el sistema tras aplicar el cambio..."></textarea>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Columna Derecha: Resumen de la Solicitud (Referencia) -->
+          <div class="flex flex-direction-column gap-4">
+            <div class="card" style="background: var(--bg-surface);">
+              <div class="section-title">Referencia de Solicitud</div>
+              <div class="detail-row">
+                <span class="detail-key">Título</span>
+                <span class="detail-value">Error en cálculo de IVA al finalizar compra</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-key">Descripción Original</span>
+                <span class="detail-value text-muted text-sm">El sistema calcula el 15% en lugar del 18%.</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-key">Justificación</span>
+                <span class="detail-value text-muted text-sm">Cumplimiento legal.</span>
+              </div>
+            </div>
+
+            <div class="card" style="border: 1px dashed var(--accent);">
+              <div class="section-title">Acción de Envío</div>
+              <p class="text-xs text-muted mb-3">Al guardar el análisis, la solicitud pasará automáticamente al estado "Pendiente de Aprobación" para el Director o el Comité.</p>
+              <button class="btn btn-primary" style="width: 100%; justify-content: center;">Enviar Análisis Completado</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="sidebar.js"></script>
+  <script>
+    document.getElementById('sidebar-container').innerHTML = renderSidebar('ui-07', 'arquitecto');
+  </script>
+</body>
+</html>

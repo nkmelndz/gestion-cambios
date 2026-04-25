@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Gestión de Cambios — Índice de Interfaces</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 40px 20px; }
+    .index-container { max-width: 860px; width: 100%; }
+    .index-header { text-align: center; margin-bottom: 48px; }
+    .index-header .badge-tag {
+      display: inline-block;
+      background: rgba(108,99,255,0.15);
+      color: var(--accent-light);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 4px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(108,99,255,0.3);
+      margin-bottom: 16px;
+    }
+    .index-header h1 {
+      font-size: 32px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #e8eaf2 30%, var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+    }
+    .index-header p { color: var(--text-secondary); font-size: 14px; }
+    .modules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .module-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      transition: all 0.2s ease;
+    }
+    .module-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: var(--shadow-accent); }
+    .module-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .module-icon { font-size: 24px; width: 44px; height: 44px; background: var(--bg-elevated); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; }
+    .module-title { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+    .module-desc { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .ui-links { display: flex; flex-direction: column; gap: 6px; }
+    .ui-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+    .ui-link:hover { background: var(--bg-card-hover); border-color: var(--accent-light); }
+    .ui-link-id { font-size: 10px; font-weight: 700; color: var(--accent-light); font-family: monospace; }
+    .ui-link-name { font-size: 12px; color: var(--text-secondary); }
+    .ui-link-arrow { color: var(--text-muted); font-size: 14px; }
+    .ui-link:hover .ui-link-arrow { color: var(--accent-light); }
+  </style>
+</head>
+<body>
+  <div class="index-container">
+    <div class="index-header">
+      <div class="badge-tag">🚀 Sistema de Gestión de Cambios</div>
+      <h1>Prototipo de Interfaces</h1>
+      <p>14 interfaces de usuario diseñadas según el flujo de gestión de cambios G04</p>
+    </div>
+
+    <div class="modules-grid">
+      <!-- Auth & Dashboard -->
+      <div class="module-card">
+        <div class="module-header">
+          <div class="module-icon">🔐</div>
+          <div>
+            <div class="module-title">Autenticación y Dashboard</div>
+            <div class="module-desc">Acceso y panel de control</div>
+          </div>
+        </div>
+        <div class="ui-links">
+          <a href="ui-01-login.html" class="ui-link">
+            <div><span class="ui-link-id">UI-01</span><div class="ui-link-name">Pantalla de Login</div></div>
+            <span class="ui-link-arrow">→</span>
+          </a>
+          <a href="ui-02-dashboard.html" class="ui-link">
+            <div><span class="ui-link-id">UI-02</span><div class="ui-link-name">Dashboard Principal</div></div>
+            <span class="ui-link-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Solicitudes -->
+      <div class="module-card">
+        <div class="module-header">
+          <div class="module-icon">📝</div>
+          <div>
+            <div class="module-title">Módulo de Solicitudes</div>
+            <div class="module-desc">Solicitante</div>
+          </div>
+        </div>
+        <div class="ui-links">
+          <a href="ui-03-nueva-solicitud.html" class="ui-link">
+            <div><span class="ui-link-id">UI-03</span><div class="ui-link-name">Formulario Nueva Solicitud de Cambio</div></div>
+            <span class="ui-link-arrow">→</span>
+          </a>
+          <a href="ui-04-mis-solicitudes.html" class="ui-link">
+            <div><span class="ui-link-id">UI-04</span><div class="ui-link-name">Mis Solicitudes</div></div>
+            <span class="ui-link-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Gestión -->
+      <div class="module-card">
+        <div class="module-header">
+          <div class="module-icon">📋</div>
+          <div>
+            <div class="module-title">Gestión y Clasificación</div>
+            <div class="module-desc">Director del Proyecto</div>
+          </div>
+        </div>
+        <div class="ui-links">
+          <a href="ui-05-bandeja-entrada.html" class="ui-link">
+            <div><span class="ui-link-id">UI-05</span><div class="ui-link-name">Bandeja de Entrada de Solicitudes</div></div>
+            <span class="ui-link-arrow">→</span>
+          </a>
+          <a href="ui-06-detalle-validacion.html" class="ui-link">
+            <div><span class="ui-link-id">UI-06</span><div class="ui-link-name">Detalle y Validación de SC</div></div>
+            <span class="ui-link-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Análisis -->
+      <div class="module-card">
+        <div class="module-header">
+          <div class="module-icon">🔍</div>
+          <div>
+            <div class="module-title">Análisis de Impacto</div>
+            <div class="module-desc">Arquitecto de Software</div>
+          </div>
+        </div>
+        <div class="ui-links">
+          <a href="ui-07-analisis-impacto.html" class="ui-link">
+            <div><span class="ui-link-id">UI-07</span><div class="ui-link-name">Panel de Análisis de Impacto</div></div>
+            <span class="ui-link-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Aprobación -->
+      <div class="module-card">
+        <div class="module-header">
+          <div class="module-icon">✅</div>
+          <div>
+            <div class="module-title">Módulo de Aprobación</div>
+            <div class="module-desc">Comité / Director</div>
+          </div>
+        </div>
+        <div class="ui-links">
+          <a href="ui-08-sala-revision.html" class="ui-link">
+            <div><span class="ui-link-id">UI-08</span><div class="ui-link-name">Sala de Revisión y Aprobación</div></div>
+            <span class="ui-link-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Implementación -->
+      <div class="module-card">
+        <div class="module-header">
+          <div class="module-icon">💻</div>
+          <div>
+            <div class="module-title">Módulo de Implementación</div>
+            <div class="module-desc">Desarrollador</div>
+          </div>
+        </div>
+        <div class="ui-links">
+          <a href="ui-09-panel-desarrollo.html" class="ui-link">
+            <div><span class="ui-link-id">UI-09</span><div class="ui-link-name">Panel de Tareas de Desarrollo</div></div>
+            <span class="ui-link-arrow">→</span>
+          </a>
+          <a href="ui-10-registro-implementacion.html" class="ui-link">
+            <div><span class="ui-link-id">UI-10</span><div class="ui-link-name">Registro de Implementación</div></div>
+            <span class="ui-link-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- QA -->
+      <div class="module-card">
+        <div class="module-header">
+          <div class="module-icon">🧪</div>
+          <div>
+            <div class="module-title">Pruebas y QA</div>
+            <div class="module-desc">Tester / Verificador</div>
+          </div>
+        </div>
+        <div class="ui-links">
+          <a href="ui-11-panel-pruebas.html" class="ui-link">
+            <div><span class="ui-link-id">UI-11</span><div class="ui-link-name">Panel de Pruebas Pendientes</div></div>
+            <span class="ui-link-arrow">→</span>
+          </a>
+          <a href="ui-12-resultados-pruebas.html" class="ui-link">
+            <div><span class="ui-link-id">UI-12</span><div class="ui-link-name">Registro de Resultados de Pruebas</div></div>
+            <span class="ui-link-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Despliegue y Cierre -->
+      <div class="module-card">
+        <div class="module-header">
+          <div class="module-icon">🚀</div>
+          <div>
+            <div class="module-title">Despliegue y Cierre</div>
+            <div class="module-desc">Director del Proyecto</div>
+          </div>
+        </div>
+        <div class="ui-links">
+          <a href="ui-13-verificacion-versionado.html" class="ui-link">
+            <div><span class="ui-link-id">UI-13</span><div class="ui-link-name">Verificación y Versionado</div></div>
+            <span class="ui-link-arrow">→</span>
+          </a>
+          <a href="ui-14-cierre-solicitud.html" class="ui-link">
+            <div><span class="ui-link-id">UI-14</span><div class="ui-link-name">Cierre de Solicitud</div></div>
+            <span class="ui-link-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

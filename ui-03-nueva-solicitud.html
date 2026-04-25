@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nueva Solicitud — Sistema de Gestión de Cambios</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-container"></div>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1 class="page-title">Nueva Solicitud de Cambio</h1>
+          <span class="text-muted">/</span>
+          <span class="page-subtitle">Reportar Incidencia o Mejora</span>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn btn-ghost btn-sm" onclick="window.history.back()">Cancelar</button>
+          <button class="btn btn-primary btn-sm">Enviar Solicitud</button>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <div style="max-width: 800px; margin: 0 auto;">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">Detalles de la Solicitud</h2>
+                <p class="card-subtitle">Completa la información necesaria para procesar el cambio</p>
+              </div>
+            </div>
+            
+            <form>
+              <div class="form-group">
+                <label class="form-label">Título de la Solicitud <span class="required">*</span></label>
+                <input type="text" class="form-control" placeholder="Ej: Error en el cálculo de impuestos al finalizar compra">
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Tipo de Cambio <span class="required">*</span></label>
+                  <select class="form-control">
+                    <option value="">Selecciona una opción</option>
+                    <option value="incidencia">Incidencia / Error</option>
+                    <option value="mejora">Mejora de Funcionalidad</option>
+                    <option value="legal">Requerimiento Legal / Normativo</option>
+                    <option value="otro">Otro</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Prioridad Sugerida</label>
+                  <select class="form-control">
+                    <option value="baja">Baja</option>
+                    <option value="media" selected>Media</option>
+                    <option value="alta">Alta</option>
+                    <option value="critica">Crítica</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Descripción Detallada <span class="required">*</span></label>
+                <textarea class="form-control" placeholder="Describe el comportamiento actual y el esperado..."></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Justificación del Cambio <span class="required">*</span></label>
+                <textarea class="form-control" placeholder="¿Por qué es necesario realizar este cambio ahora?"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Elemento de Configuración (ECS) Afectado <span class="text-xs">(Opcional)</span></label>
+                <input type="text" class="form-control" placeholder="Ej: Módulo de Facturación, Base de Datos Usuarios">
+                <p class="form-hint">Si conoces qué componente del sistema falla, indícalo aquí.</p>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Archivos Adjuntos</label>
+                <div class="file-upload">
+                  <div class="file-upload-icon">📁</div>
+                  <div class="file-upload-text"><strong>Haz clic para subir</strong> o arrastra y suelta</div>
+                  <div class="file-upload-hint">Sube capturas de pantalla, logs o documentos técnicos (Máx 10MB)</div>
+                </div>
+              </div>
+
+              <div class="flex justify-between mt-4">
+                <p class="text-xs text-muted">Los campos marcados con <span class="text-danger">*</span> son obligatorios.</p>
+                <div class="flex gap-2">
+                  <button type="button" class="btn btn-ghost">Guardar Borrador</button>
+                  <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="sidebar.js"></script>
+  <script>
+    document.getElementById('sidebar-container').innerHTML = renderSidebar('ui-03', 'solicitante');
+  </script>
+</body>
+</html>

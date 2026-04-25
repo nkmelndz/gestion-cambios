@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aprobación SC-045 — Sistema de Gestión de Cambios</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-container"></div>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1 class="page-title">Revisión y Decisión Final</h1>
+          <span class="text-muted">/</span>
+          <span class="page-subtitle font-mono text-accent">SC-045</span>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn btn-ghost btn-sm" onclick="window.history.back()">Regresar</button>
+          <div class="flex gap-2">
+            <button class="btn btn-danger btn-sm">Rechazar Cambio</button>
+            <button class="btn btn-success btn-sm">Aprobar Cambio</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <!-- Trazabilidad Visual -->
+        <div class="card mb-4">
+          <div class="progress-track">
+            <div class="progress-step done">
+              <div class="step-circle">1</div>
+              <div class="step-label">Validación Inicial</div>
+            </div>
+            <div class="progress-step done">
+              <div class="step-circle">2</div>
+              <div class="step-label">Análisis de Impacto</div>
+            </div>
+            <div class="progress-step current">
+              <div class="step-circle">3</div>
+              <div class="step-label">Aprobación Comité</div>
+            </div>
+            <div class="progress-step">
+              <div class="step-circle">4</div>
+              <div class="step-label">Implementación</div>
+            </div>
+            <div class="progress-step">
+              <div class="step-circle">5</div>
+              <div class="step-label">Pruebas / QA</div>
+            </div>
+            <div class="progress-step">
+              <div class="step-circle">6</div>
+              <div class="step-label">Cierre</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2" style="grid-template-columns: 1.2fr 0.8fr;">
+          <!-- Resumen Técnico para Aprobación -->
+          <div class="card">
+            <div class="section-title">Expediente de Cambio</div>
+            <div class="flex justify-between items-center mb-3">
+              <span class="badge badge-major" style="font-size: 14px; padding: 6px 16px;">CAMBIO MAYOR</span>
+              <div class="text-right">
+                <div class="text-xs text-muted">Solicitado por:</div>
+                <div class="text-sm font-bold">Ana Quispe</div>
+              </div>
+            </div>
+
+            <div class="detail-row">
+              <span class="detail-key">Análisis de Arquitectura</span>
+              <p class="text-sm mt-1">El cambio requiere la modificación del <code>engine_tax_calculator.js</code> y la actualización del esquema de la tabla <code>orders</code>. Se estima un esfuerzo de <strong>12 horas-hombre</strong>.</p>
+            </div>
+
+            <div class="grid-2 mt-2">
+              <div class="card" style="background: var(--bg-elevated); padding: 12px;">
+                <span class="text-xs font-bold text-success uppercase">Riesgos</span>
+                <p class="text-xs text-secondary mt-1">Posible impacto en reportes históricos de ventas si no se maneja versionado de tasas.</p>
+              </div>
+              <div class="card" style="background: var(--bg-elevated); padding: 12px;">
+                <span class="text-xs font-bold text-info uppercase">ECS Afectados</span>
+                <p class="text-xs text-secondary mt-1">Módulo de Facturación, Base de Datos, Reportes Legales.</p>
+              </div>
+            </div>
+
+            <div class="section-title mt-4">Votación del Comité / Acta</div>
+            <div class="form-group">
+              <label class="form-label">Justificación de la Decisión <span class="required">*</span></label>
+              <textarea class="form-control" placeholder="Indica por qué se aprueba o rechaza el cambio..."></textarea>
+            </div>
+          </div>
+
+          <!-- Asignación de Recursos (Solo si se aprueba) -->
+          <div class="card">
+            <div class="section-title">Asignación de Ejecución</div>
+            <p class="text-xs text-muted mb-3">Configura quién realizará y quién probará este cambio.</p>
+            
+            <form>
+              <div class="form-group">
+                <label class="form-label">Desarrollador Responsable</label>
+                <select class="form-control">
+                  <option value="gh">Gregory Huanca</option>
+                  <option value="rs">Ricardo Santos</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Tester / QA Asignado</label>
+                <select class="form-control">
+                  <option value="cc">Cesar Camac</option>
+                  <option value="lm">Lucía Méndez</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Fecha Límite Sugerida</label>
+                <input type="date" class="form-control">
+              </div>
+
+              <div class="card mt-4" style="background: rgba(34,197,94,0.05); border-color: rgba(34,197,94,0.2);">
+                <button type="submit" class="btn btn-success" style="width: 100%; justify-content: center;">Aprobar y Asignar Tareas</button>
+                <p class="text-xs text-center text-muted mt-2">Notificará automáticamente a los responsables.</p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="sidebar.js"></script>
+  <script>
+    document.getElementById('sidebar-container').innerHTML = renderSidebar('ui-08', 'director');
+  </script>
+</body>
+</html>
