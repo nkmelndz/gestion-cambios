@@ -1,0 +1,76 @@
+@startuml Diagrama de Clases de Análisis - GestioCambios
+
+title Diagrama de Clases (Nivel de Análisis)
+skinparam classAttributeIconSize 0
+skinparam Shadowing false
+skinparam linetype ortho
+
+' --- Entidades Principales ---
+
+class Usuario {
+  + nombre
+  + rol
+  + correo
+}
+
+class SolicitudCambio {
+  + id_sc
+  + titulo
+  + descripcion
+  + prioridad
+  + fecha_creacion
+}
+
+class AnalisisImpacto {
+  + costo_estimado
+  + riesgo_identificado
+  + beneficios
+  + categoria (Mayor/Menor)
+}
+
+class ECS {
+  + codigo
+  + nombre
+  + tipo
+}
+
+class RevisionComite {
+  + fecha_decision
+  + decision (Aprobado/Rechazado)
+  + justificacion
+}
+
+class Implementacion {
+  + rama_git
+  + pull_request_url
+  + fecha_entrega
+}
+
+class PruebaQA {
+  + resultado (Exitoso/Fallido)
+  + detalle_error
+  + evidencias
+}
+
+class Version {
+  + codigo_version
+  + fecha_despliegue
+  + release_notes
+}
+
+' --- Relaciones ---
+
+Usuario "1" -- "0..*" SolicitudCambio : reporta >
+Usuario "1" -- "0..*" SolicitudCambio : asignado_a (Director) >
+
+SolicitudCambio "1" *-- "1" AnalisisImpacto : tiene >
+AnalisisImpacto "1" o-- "1..*" ECS : afecta >
+
+SolicitudCambio "1" *-- "0..1" RevisionComite : evaluada_por >
+
+SolicitudCambio "1" *-- "0..1" Implementacion : ejecutada_en >
+Implementacion "1" *-- "0..*" PruebaQA : verificada_por >
+
+SolicitudCambio "1" -- "0..1" Version : incluida_en >
+
+@enduml
