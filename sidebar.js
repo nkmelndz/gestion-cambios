@@ -25,8 +25,8 @@ function renderSidebar(activeId = '', role = 'director') {
     { id:'ui-10', href:'ui-10-registro-implementacion.html',icon:'📤', label:'Registrar Cambio',      section:'Desarrollador' },
     { id:'ui-11', href:'ui-11-panel-pruebas.html',          icon:'🧪', label:'Pruebas Pendientes',    section:'QA', badge:3 },
     { id:'ui-12', href:'ui-12-resultados-pruebas.html',     icon:'📋', label:'Resultados de Pruebas', section:'QA' },
-    { id:'ui-13', href:'ui-13-verificacion-versionado.html',icon:'🚀', label:'Verificar y Versionar', section:'Director' },
-    { id:'ui-14', href:'ui-14-cierre-solicitud.html',       icon:'🏁', label:'Cierre de Solicitud',   section:'Director' },
+    { id:'ui-13', href:'ui-13-verificacion-versionado.html',icon:'🚀', label:'Verificar y Versionar', section:'Despliegue' },
+    { id:'ui-14', href:'ui-14-cierre-solicitud.html',       icon:'🏁', label:'Cierre de Solicitud',   section:'Despliegue' },
   ];
 
   // Group by section
