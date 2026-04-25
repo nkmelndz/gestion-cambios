@@ -1,0 +1,96 @@
+@startuml Casos de Uso - GestioCambios
+
+header Sistema de Gestión de Cambios (G04)
+title Diagrama de Casos de Uso (Grilla 2x4)
+
+left to right direction
+skinparam packageStyle rectangle
+skinparam Shadowing false
+
+' --- Actores ---
+actor "Solicitante" as AS
+actor "Arquitecto" as AA
+actor "Desarrollador" as AD
+actor "Tester / QA" as AT
+actor "Director" as DP
+
+DP --|> AA
+DP --|> AD
+DP --|> AT
+
+rectangle "GestioCambios System" {
+
+  ' --- Fila 1 ---
+  together {
+    package "INICIO" as P1 {
+      usecase "UC01. Consultar Métricas" as UC01
+      usecase "UC02. Ver Bandeja de Tareas" as UC02
+    }
+    package "SOLICITUDES" as P2 {
+      usecase "UC03. Crear Nueva Solicitud" as UC03
+      usecase "UC04. Consultar Mis Solicitudes" as UC04
+    }
+    package "GESTIÓN" as P3 {
+      usecase "UC05. Validar Solicitud" as UC05
+      usecase "UC06. Clasificar y Asignar" as UC06
+    }
+    package "ANÁLISIS" as P4 {
+      usecase "UC07. Identificar ECS" as UC07
+      usecase "UC08. Evaluar Riesgos" as UC08
+    }
+  }
+
+  ' --- Fila 2 ---
+  together {
+    package "APROBACIÓN" as P5 {
+      usecase "UC09. Decidir Cambio" as UC09
+      usecase "UC10. Asignar Recursos" as UC10
+    }
+    package "IMPLEMENTACIÓN" as P6 {
+      usecase "UC11. Registrar Desarrollo" as UC11
+      usecase "UC12. Vincular PR/Rama" as UC12
+    }
+    package "PRUEBAS" as P7 {
+      usecase "UC13. Ejecutar Pruebas" as UC13
+      usecase "UC14. Registrar Resultado QA" as UC14
+    }
+    package "DESPLIEGUE" as P8 {
+      usecase "UC15. Verificar Versión" as UC15
+      usecase "UC16. Cerrar Solicitud" as UC16
+    }
+  }
+
+  ' Alineación Vertical
+  P1 -[hidden]down- P5
+  P2 -[hidden]down- P6
+  P3 -[hidden]down- P7
+  P4 -[hidden]down- P8
+}
+
+' --- Relaciones ---
+AS --> UC01
+AS --> UC03
+AS --> UC04
+
+DP --> UC01
+DP --> UC02
+DP --> UC05
+DP --> UC06
+DP --> UC09
+DP --> UC10
+DP --> UC15
+DP --> UC16
+
+AA --> UC02
+AA --> UC07
+AA --> UC08
+
+AD --> UC02
+AD --> UC11
+AD --> UC12
+
+AT --> UC02
+AT --> UC13
+AT --> UC14
+
+@enduml
